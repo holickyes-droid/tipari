@@ -1,0 +1,240 @@
+  // KROK 4A – ČEKÁ SE NA PODPIS INVESTORA
+  if (currentStep === 'waiting-electronic') {
+    return (
+      <div className="w-full h-full flex flex-col">
+        {/* Header */}
+        <div className="relative border-b border-gray-200 pb-4 mb-6">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#215EF8] to-[#1a4bc7] flex items-center justify-center flex-shrink-0">
+              <Clock className="w-5 h-5 text-white" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-xl font-semibold text-[#040F2A] mb-1">
+                Čeká se na podpis investora
+              </h2>
+              <p className="text-sm text-[#6B7280]">
+                Rezervační smlouva byla odeslána k elektronickému podpisu
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto space-y-5">
+          {/* Status */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="flex items-start gap-2 mb-3">
+              <Info className="w-5 h-5 text-[#215EF8] flex-shrink-0 mt-0.5" />
+              <div>
+                <div className="text-sm font-semibold text-[#040F2A] mb-1">Stav smlouvy</div>
+                <div className="text-xs text-[#6B7280]">Čeká na podpis investora</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Current email info */}
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
+            <div className="flex items-center justify-between mb-3">
+              <div className="text-xs font-semibold text-[#6B7280] uppercase tracking-wide">
+                Email pro podpis
+              </div>
+              <button
+                onClick={() => setShowEmailChangeForm(!showEmailChangeForm)}
+                className="flex items-center gap-1 text-xs text-[#215EF8] hover:text-[#1a4bc7]"
+              >
+                <Edit2 className="w-3 h-3" />
+                Změnit email
+              </button>
+            </div>
+            
+            {selectedInvestor && (
+              <div className="space-y-2">
+                <div>
+                  <div className="text-xs text-[#6B7280] mb-1">Jméno investora</div>
+                  <div className="text-sm font-semibold text-[#040F2A]">{selectedInvestor.name}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-[#6B7280] mb-1">Email</div>
+                  <div className="text-sm font-semibold text-[#040F2A]">
+                    {customEmail || selectedInvestor.email}
+                  </div>
+                </div>
+                {contractSentAt && (
+                  <div>
+                    <div className="text-xs text-[#6B7280] mb-1">Naposledy odesláno</div>
+                    <div className="text-xs text-[#6B7280]">
+                      {contractSentAt.toLocaleString('cs-CZ')}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Email change form */}
+          {showEmailChangeForm && (
+            <div className="bg-white border-2 border-[#215EF8] rounded-lg p-5">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-sm font-bold text-[#040F2A]">Změnit email</h3>
+                <button
+                  onClick={() => {
+                    setShowEmailChangeForm(false);
+                    setCustomEmail('');
+                  }}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              
+              <div className="space-y-3">
+                <div>
+                  <label className="text-xs text-[#6B7280] mb-1 block">
+                    Email pro odeslání smlouvy *
+                  </label>
+                  <input 
+                    type="email" 
+                    value={customEmail}
+                    onChange={(e) => setCustomEmail(e.target.value)}
+                    className="w-full text-sm border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#215EF8]"
+                    placeholder={selectedInvestor?.email || 'investor@example.com'}
+                  />
+                  <div className="text-xs text-[#6B7280] mt-1">
+                    Zadejte email, na který chcete poslat rezervační smlouvu
+                  </div>
+                </div>
+                
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+                  <div className="flex items-start gap-2">
+                    <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <div className="text-xs text-amber-900">
+                      Smlouva bude odeslána na nový email. Ujistěte se, že je emailová adresa správná.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex justify-end gap-2 mt-4 pt-4 border-t border-gray-200">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setShowEmailChangeForm(false);
+                    setCustomEmail('');
+                  }}
+                  className="text-xs"
+                >
+                  Zrušit
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={handleResendContract}
+                  disabled={!customEmail && !selectedInvestor?.email}
+                  className="bg-[#215EF8] hover:bg-[#1a4bc7] text-white text-xs"
+                >
+                  Poslat smlouvu
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Resend contract action */}
+          {!showEmailChangeForm && (
+            <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-dashed border-gray-300 rounded-lg p-5 text-center">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <AlertCircle className="w-5 h-5 text-[#6B7280]" />
+                <div className="text-sm font-semibold text-[#040F2A]">
+                  Investor ještě nepodepsal smlouvu?
+                </div>
+              </div>
+              <p className="text-xs text-[#6B7280] mb-4">
+                Pošlete investorovi připomínku s odkazem na podpis smlouvy
+              </p>
+              <Button
+                onClick={handleResendContract}
+                variant="outline"
+                className="border-[#215EF8] text-[#215EF8] hover:bg-[#215EF8] hover:text-white"
+              >
+                Poslat smlouvu znovu
+              </Button>
+            </div>
+          )}
+
+          {/* Preview contract */}
+          <div className="bg-white border border-gray-200 rounded-lg p-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                <FileText className="w-5 h-5 text-gray-600" />
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-[#040F2A] mb-1">
+                  Náhled rezervační smlouvy
+                </div>
+                <div className="text-xs text-[#6B7280]">
+                  Prohlédněte si obsah smlouvy odeslané investorovi
+                </div>
+              </div>
+              <Button
+                variant="outline"
+                onClick={() => setShowContractPreview(true)}
+              >
+                Zobrazit
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="flex items-center justify-end gap-3 pt-5 border-t border-gray-200 mt-5">
+          <Button
+            variant="outline"
+            onClick={handleBack}
+            className="border-gray-300 hover:bg-gray-50"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Zpět
+          </Button>
+        </div>
+
+        {/* Contract Preview Modal */}
+        {showContractPreview && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
+              <div className="border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-[#040F2A]">Náhled rezervační smlouvy</h3>
+                <button
+                  onClick={() => setShowContractPreview(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto p-6 bg-gray-50">
+                <div className="bg-white rounded border border-gray-200 p-6 font-mono text-xs whitespace-pre-wrap">
+                  {getContractContent()}
+                </div>
+              </div>
+              <div className="border-t border-gray-200 px-6 py-4 flex justify-end gap-2">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowContractPreview(false)}
+                >
+                  Zavřít
+                </Button>
+                <Button
+                  onClick={() => {
+                    handleDownloadContract();
+                    setShowContractPreview(false);
+                  }}
+                  className="bg-[#215EF8] hover:bg-[#1a4bc7] text-white"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Stáhnout
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }

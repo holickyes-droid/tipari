@@ -1,0 +1,426 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  
+  /* ========================================
+     TIPARI.CZ DESIGN SYSTEM - LOGOMANUÁL
+     ======================================== */
+  
+  /* Brand Colors - Primary Palette */
+  --color-brand-blue: #215EF8;
+  --color-brand-blue-dark: #1a4bc6;
+  --color-brand-blue-light: #EEF3FF;
+  
+  --color-brand-green: #14AE6B;
+  --color-brand-green-dark: #0f8d54;
+  --color-brand-green-light: #E8F8F1;
+  
+  --color-brand-navy: #040F2A;
+  --color-brand-navy-light: #1a2742;
+  
+  /* Commission/Reward Color - Premium Gold */
+  --color-commission: #F59E0B;
+  --color-commission-dark: #D97706;
+  --color-commission-light: #FEF3C7;
+  
+  /* Semantic Colors */
+  --color-success: #14AE6B;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-info: #215EF8;
+  
+  /* Typography Scale */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Spacing Scale */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;  /* 6px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  
+  /* ========================================
+     TYPOGRAPHY SYSTEM - INTER FONT
+     ======================================== */
+  
+  /* Font Family */
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* 1. Display / Page Title */
+  --type-display-page-size: 2rem;           /* 32px */
+  --type-display-page-line: 2.5rem;         /* 40px */
+  --type-display-page-weight: 700;
+  --type-display-page-spacing: -0.02em;
+  
+  /* 2. Heading / Section */
+  --type-heading-section-size: 1.25rem;     /* 20px */
+  --type-heading-section-line: 1.75rem;     /* 28px */
+  --type-heading-section-weight: 600;
+  --type-heading-section-spacing: -0.01em;
+  
+  /* 3. Heading / Subsection */
+  --type-heading-subsection-size: 1rem;     /* 16px */
+  --type-heading-subsection-line: 1.5rem;   /* 24px */
+  --type-heading-subsection-weight: 600;
+  --type-heading-subsection-spacing: -0.01em;
+  
+  /* 4. Body / Primary */
+  --type-body-primary-size: 0.875rem;       /* 14px */
+  --type-body-primary-line: 1.375rem;       /* 22px */
+  --type-body-primary-weight: 400;
+  --type-body-primary-spacing: 0;
+  
+  /* 5. Body / Secondary */
+  --type-body-secondary-size: 0.8125rem;    /* 13px */
+  --type-body-secondary-line: 1.25rem;      /* 20px */
+  --type-body-secondary-weight: 400;
+  --type-body-secondary-spacing: 0;
+  
+  /* 6. Label / Strong */
+  --type-label-strong-size: 0.8125rem;      /* 13px */
+  --type-label-strong-line: 1.125rem;       /* 18px */
+  --type-label-strong-weight: 500;
+  --type-label-strong-spacing: 0.01em;
+  
+  /* 7. Label / Muted */
+  --type-label-muted-size: 0.75rem;         /* 12px */
+  --type-label-muted-line: 1rem;            /* 16px */
+  --type-label-muted-weight: 400;
+  --type-label-muted-spacing: 0.02em;
+  
+  /* 8. Number / Metric L */
+  --type-number-metric-l-size: 1.5rem;      /* 24px */
+  --type-number-metric-l-line: 2rem;        /* 32px */
+  --type-number-metric-l-weight: 600;
+  --type-number-metric-l-spacing: -0.01em;
+  
+  /* 9. Number / Metric M */
+  --type-number-metric-m-size: 1rem;        /* 16px */
+  --type-number-metric-m-line: 1.5rem;      /* 24px */
+  --type-number-metric-m-weight: 600;
+  --type-number-metric-m-spacing: -0.01em;
+  
+  /* 10. Button / Primary */
+  --type-button-primary-size: 0.875rem;     /* 14px */
+  --type-button-primary-line: 1.25rem;      /* 20px */
+  --type-button-primary-weight: 600;
+  --type-button-primary-spacing: 0.01em;
+  
+  /* 11. Button / Secondary */
+  --type-button-secondary-size: 0.875rem;   /* 14px */
+  --type-button-secondary-line: 1.25rem;    /* 20px */
+  --type-button-secondary-weight: 500;
+  --type-button-secondary-spacing: 0.01em;
+  
+  /* 12. Badge / Status */
+  --type-badge-status-size: 0.75rem;        /* 12px */
+  --type-badge-status-line: 1rem;           /* 16px */
+  --type-badge-status-weight: 500;
+  --type-badge-status-spacing: 0.02em;
+  
+  /* 13. Table / Cell */
+  --type-table-cell-size: 0.875rem;         /* 14px */
+  --type-table-cell-line: 1.25rem;          /* 20px */
+  --type-table-cell-weight: 400;
+  --type-table-cell-spacing: 0;
+  
+  /* 14. Table / Header */
+  --type-table-header-size: 0.8125rem;      /* 13px */
+  --type-table-header-line: 1.125rem;       /* 18px */
+  --type-table-header-weight: 500;
+  --type-table-header-spacing: 0.02em;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter);
+  }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+
+  /* Enhanced Select Styling */
+  select {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  /* Custom styled select options */
+  select option {
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    color: #040F2A;
+    font-weight: 500;
+  }
+
+  select option:hover,
+  select option:focus,
+  select option:checked {
+    background: linear-gradient(135deg, #215EF8 0%, #1a4bc6 100%);
+    color: white;
+  }
+
+  select option:disabled {
+    background-color: #f3f4f6;
+    color: #9ca3af;
+  }
+  
+  /* ========================================
+     TYPOGRAPHY UTILITIES
+     ======================================== */
+  
+  /* Tabular Numbers - for aligned numeric values */
+  .tabular-nums {
+    font-feature-settings: "tnum" 1;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Value Typography - for important numeric data */
+  .text-value {
+    @apply tabular-nums font-bold;
+  }
+  
+  /* ========================================
+     MICROINTERACTION UTILITIES
+     ======================================== */
+  
+  /* Hover Scale Effect - for interactive buttons */
+  .hover-scale {
+    @apply transition-transform duration-200 ease-out;
+  }
+  
+  .hover-scale:hover {
+    @apply scale-[1.02];
+  }
+  
+  /* Fade In Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 150ms ease-out;
+  }
+  
+  .animate-fade-in-slow {
+    animation: fadeIn 200ms ease-out;
+  }
+  
+  /* Stagger Children Animation */
+  .stagger-fade > * {
+    animation: fadeIn 150ms ease-out;
+    animation-fill-mode: backwards;
+  }
+  
+  .stagger-fade > *:nth-child(1) { animation-delay: 0ms; }
+  .stagger-fade > *:nth-child(2) { animation-delay: 50ms; }
+  .stagger-fade > *:nth-child(3) { animation-delay: 100ms; }
+  .stagger-fade > *:nth-child(4) { animation-delay: 150ms; }
+  .stagger-fade > *:nth-child(5) { animation-delay: 200ms; }
+  .stagger-fade > *:nth-child(6) { animation-delay: 250ms; }
+  .stagger-fade > *:nth-child(7) { animation-delay: 300ms; }
+  .stagger-fade > *:nth-child(8) { animation-delay: 350ms; }
+  .stagger-fade > *:nth-child(9) { animation-delay: 400ms; }
+  .stagger-fade > *:nth-child(10) { animation-delay: 450ms; }
+}
